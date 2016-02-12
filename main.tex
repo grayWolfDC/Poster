@@ -111,7 +111,13 @@
 \begin{itemize}
 \item Ocean color missions are subject to pre-specified uncertainty requirements.
 \item Requirements are borne out of guesswork
-\item Typical uncertainty estimation: comparison with noisy in-situ data.
+\item Typical uncertainty estimation uses problematic comparison with in-situ data;
+	\begin{itemize}
+	\item in-situ data sampling is potentially biased to easily accessible areas,
+	\item difficult to separate noise from in-situ and satellite measurements
+	\item differences in sampling scale also confounding.
+\end{itemize}	 
+\item
 \item 
 \end{itemize}
 
@@ -308,10 +314,9 @@ Maecenas ultricies feugiat velit non mattis. Fusce tempus arcu id ligula varius 
 %----------------------------------------------------------------------------------------
 
 \begin{block}{References}
-
-\nocite{*} % Insert publications even if they are not cited in the poster
-\small{\bibliographystyle{unsrt}
-\bibliography{sample}\vspace{0.75in}}
+\nocite{} % Insert publications even if they are not cited in the poster
+\small{\bibliographystyle{IEEEtran}
+\bibliography{./sample.bib}\vspace{0.75in}}
 
 \end{block}
 
