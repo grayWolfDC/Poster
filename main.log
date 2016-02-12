@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.24)  12 FEB 2016 15:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.24)  12 FEB 2016 16:06
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1158,29 +1158,29 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <17.86> not available
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <12.50194> not available
 (Font)              size <12> substituted on input line 74.
 
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 281.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 279.
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for TS1+lmss on input line 281
+LaTeX Font Info:    Try loading font information for TS1+lmss on input line 279
 .
 
 (/usr/share/texmf/tex/latex/lm/ts1lmss.fd
 File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Calculating math sizes for size <37.03> on input line 281.
+LaTeX Font Info:    Calculating math sizes for size <37.03> on input line 279.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <37.03> not available
-(Font)              size <24.88> substituted on input line 281.
+(Font)              size <24.88> substituted on input line 279.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <25.92088> not available
-(Font)              size <24.88> substituted on input line 281.
+(Font)              size <24.88> substituted on input line 279.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <18.515> not available
-(Font)              size <17.28> substituted on input line 281.
+(Font)              size <17.28> substituted on input line 279.
 
 <placeholder.jpg, id=14, 351.3125pt x 193.72375pt>
 File: placeholder.jpg Graphic file (type jpg)
@@ -1193,7 +1193,7 @@ File: global412.png Graphic file (type png)
 <use global412.png>
 File: placeholder.jpg Graphic file (type jpg)
  <use placeholder.jpg>
-Underfull \hbox (badness 10000) detected at line 281
+Underfull \hbox (badness 10000) detected at line 279
 [][][][][][][][][]
  []
 
@@ -1231,7 +1231,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  19033 strings out of 495061
  356073 string characters out of 1182621
- 487884 words of memory out of 3000000
+ 487863 words of memory out of 3000000
  21670 multiletter control sequences out of 15000+50000
  87090 words of font info for 83 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -1243,7 +1243,7 @@ bx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmssbx10.pfb>
-Output written on main.pdf (1 page, 9472129 bytes).
+Output written on main.pdf (1 page, 9472520 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  6 named destinations out of 1000 (max. 500000)
