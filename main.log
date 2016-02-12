@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.24)  11 FEB 2016 16:00
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.24)  12 FEB 2016 10:22
 entering extended mode
  %&-line parsing enabled.
-**main.tex
+**main
 (./main.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -1158,51 +1158,48 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <17.86> not available
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <12.50194> not available
 (Font)              size <12> substituted on input line 74.
 
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 364.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 361.
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for TS1+lmss on input line 364
+LaTeX Font Info:    Try loading font information for TS1+lmss on input line 361
 .
 
 (/usr/share/texmf/tex/latex/lm/ts1lmss.fd
 File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Calculating math sizes for size <37.03> on input line 364.
+LaTeX Font Info:    Calculating math sizes for size <37.03> on input line 361.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <37.03> not available
-(Font)              size <24.88> substituted on input line 364.
+(Font)              size <24.88> substituted on input line 361.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <25.92088> not available
-(Font)              size <24.88> substituted on input line 364.
+(Font)              size <24.88> substituted on input line 361.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <18.515> not available
-(Font)              size <17.28> substituted on input line 364.
+(Font)              size <17.28> substituted on input line 361.
 
-
-LaTeX Warning: Citation `Smith:2012qr' on page 1 undefined on input line 364.
-
-<placeholder.jpg, id=11, 351.3125pt x 193.72375pt>
+<placeholder.jpg, id=14, 351.3125pt x 193.72375pt>
 File: placeholder.jpg Graphic file (type jpg)
  <use placeholder.jpg>
 File: placeholder.jpg Graphic file (type jpg)
 
-<use placeholder.jpg> (./main.bbl) <logo.png, id=14, 1401.235pt x 521.95pt>
+<use placeholder.jpg> (./main.bbl) <logo.png, id=17, 1401.235pt x 521.95pt>
 File: logo.png Graphic file (type png)
 
 <use logo.png>
 File: logo.png Graphic file (type png)
  <use logo.png>
-Overfull \hbox (4.99402pt too wide) detected at line 364
+Overfull \hbox (4.99402pt too wide) detected at line 361
 [][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][
 ][] [][][][][][][][][] [][][][][][][] 
  []
 
 
-Overfull \vbox (110.59198pt too high) detected at line 364
+Overfull \vbox (245.40614pt too high) detected at line 361
  []
 
 
@@ -1227,18 +1224,15 @@ Overfull \hbox (88.20334pt too wide) has occurred while \output is active
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 28.44pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 19054 strings out of 495061
- 356464 string characters out of 1182621
- 535607 words of memory out of 3000000
- 21694 multiletter control sequences out of 15000+50000
- 92877 words of font info for 85 fonts, out of 3000000 for 9000
+ 19085 strings out of 495061
+ 357328 string characters out of 1182621
+ 539817 words of memory out of 3000000
+ 21722 multiletter control sequences out of 15000+50000
+ 94371 words of font info for 85 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 52i,18n,66p,683b,1505s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 52i,18n,66p,679b,1505s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/shar
 e/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lm
@@ -1246,9 +1240,9 @@ bx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmssbx10.pfb>
-Output written on main.pdf (1 page, 177979 bytes).
+Output written on main.pdf (1 page, 184284 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
- 5 named destinations out of 1000 (max. 500000)
+ 69 PDF objects out of 1000 (max. 8388607)
+ 8 named destinations out of 1000 (max. 500000)
  49 words of extra memory for PDF output out of 10000 (max. 10000000)
 
