@@ -149,7 +149,7 @@ Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet ac
 \begin{figure}
 %\includegraphics[width=1.0\linewidth]{placeholder.jpg}
 \includegraphics[angle=45,width=1.0\linewidth]{placeholder.jpg}
-\caption{Figure caption}
+\\{Figure caption}
 \end{figure}
 
 
@@ -161,7 +161,7 @@ Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet ac
 \begin{figure}
 %\includegraphics[width=1.0\linewidth]{placeholder.jpg}
 \includegraphics[angle=45,width=1.0\linewidth]{placeholder.jpg}
-\caption{Figure caption}
+\\{Figure caption}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
@@ -197,7 +197,7 @@ Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo mo
 \centering
 \textbf{My Title}\par\medskip
 \includegraphics[width=0.8\linewidth]{placeholder.jpg}
-\caption{Figure caption}
+\\{Figure caption}
 \end{figure}
 
 Nunc tempus venenatis facilisis. Curabitur suscipit consequat eros non porttitor. Sed a massa dolor, id ornare enim:
