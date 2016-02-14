@@ -94,9 +94,10 @@
 \begin{alertblock}{Objectives}
 
 \begin{itemize}
-\item Implement sensor-dependent noise model
-\item Quantify noise propagation due to atmospheric correction.
-\item Generate remote sensing reflectance (Rrs) uncertainty product.
+\item Implement self-contained sensor-dependent noise model.
+\item Characterize noise propagation due to atmospheric correction.
+\item Characterize impact of noise in near-infrared bands
+\item Generate remote sensing reflectance uncertainty product.
 \end{itemize}
 
 \end{alertblock}
@@ -110,11 +111,11 @@
 
 \begin{itemize}
 \item Ocean color missions subject to pre-specified uncertainty requirements.
-\item Typical uncertainty estimation uses problematic comparison with in-situ data;
+\item Uncertainty difficult to estimate consistently
+\item Typical uncertainty estimation done using potentially problematic comparisons with e.g.;
 	\begin{itemize}
-	\item in-situ data sampling is potentially biased to easily accessible areas\cite{BW:2006},
-	\item difficult to separate noise from in-situ and satellite measurements\cite{Tle:2000}
-	\item differences in sampling scale also confounding.\cite{Hu:2013}
+	\item in-situ data \cite{BW:2006,Tle:2000}
+	\item other ocean color mission\cite{Hu:2013}
 \end{itemize}	 
 \end{itemize}
 \end{block}
@@ -126,6 +127,7 @@
 
 \begin{block}{Methods}
 \begin{itemize}
+\item Quantify noise propagation across bands by introducing perturbation at Lt
 \item Model signal-to-noise Ratio (SNR) as a function of top-of-the-atmosphere radiance ($L_t$)
 \item
 \end{itemize}
@@ -151,7 +153,7 @@
 
 \begin{figure}
 %\includegraphics[width=1.0\linewidth]{placeholder.jpg}
-\includegraphics[width=1.0\linewidth]{placeholder.jpg}
+\includegraphics[width=1.0\linewidth]{Propagation.png}
 \\{Figure caption}
 \end{figure}
 
