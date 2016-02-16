@@ -22,19 +22,23 @@
 \BIBdecl
 
 \bibitem{BW:2006}
-S.~Bailey and P.~Werdell, ``A multi-sensor approach for the on-orbit validation
-  of ocean color satellite data products,'' \emph{REMOTE SENSING OF
-  ENVIRONMENT}, vol. 102, no. 1-2, pp. 12--23, 2006.
+B.~S.W. and W.~P.J., ``A multi-sensor approach for the on-orbit validation of
+  ocean color satellite data products,'' \emph{Remote Sensing of Environment},
+  vol. 102, no. 1-2, pp. 12--23, 2006.
 
 \bibitem{Tle:2000}
-D.~Toole, D.~Siegel, D.~Menzies, M.~Neumann, and R.~Smith, ``Remote-sensing
-  reflectance determinations in the coastal ocean environment: impact of
-  instrumental characteristics and environmental variability,'' \emph{APPLIED
-  OPTICS}, vol.~39, no.~3, pp. 456--469, 2000.
+T.~D.A., S.~D.~M. D.W., N.~M.J., and S.~R.C., ``Remote-sensing reflectance
+  determinations in the coastal ocean environment: impact of instrumental
+  characteristics and environmental variability,'' \emph{Applied Optics},
+  vol.~39, no.~3, pp. 456--469, 2000.
 
 \bibitem{Hu:2013}
-C.~Hu, L.~Feng, and Z.~Lee, ``Uncertainties of seawifs and modis remote sensing
-  reflectance: Implications from clear water measurements,'' \emph{REMOTE
-  SENSING OF ENVIRONMENT}, vol. 133, pp. 168--182, 2013.
+F.~L. Hu~C. and L.~Z., ``Uncertainties of seawifs and modis remote sensing
+  reflectance: Implications from clear water measurements,'' \emph{Remote
+  Sensing of Environment}, vol. 133, pp. 168--182, 2013.
+
+\bibitem{Barnes:1994}
+B.~R.A., B.~W.L., E.~W.E., and M.~C.R., ``Prelaunch acceptance report for the
+  seawifs,'' 1994.
 
 \end{thebibliography}

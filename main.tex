@@ -24,7 +24,7 @@
 
 \documentclass[final]{beamer}
 
-\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+\usepackage[scale=1.14]{beamerposter} % Use the beamerposter package for laying out the poster
 
 \usetheme{confposter} % Use the confposter theme supplied with this template
 
@@ -47,8 +47,8 @@
 \newlength{\twocolwid}
 \newlength{\threecolwid}
 \setlength{\paperwidth}{46.8in} % A0 width: 46.8in
-\setlength{\paperheight}{38in} % A0 height: 33.1in
-\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
+\setlength{\paperheight}{40in} % A0 height: 33.1in
+\setlength{\sepwid}{0.012\paperwidth} % Separation width (white space) between columns
 \setlength{\onecolwid}{0.22\paperwidth} % Width of one column
 \setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
 \setlength{\threecolwid}{0.708\paperwidth} % Width of three columns
@@ -94,7 +94,7 @@
 \begin{alertblock}{Objectives}
 
 \begin{itemize}
-\item Implement self-contained sensor-dependent noise model.
+\item Implement self-contained sensor-dependent (SeaWiFS showcased) noise model.
 \item Characterize noise propagation due to atmospheric correction.
 \item Characterize impact of noise in near-infrared bands
 \item Generate remote sensing reflectance uncertainty product.
@@ -106,33 +106,40 @@
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Introduction}
+%\begin{block}{Introduction}
 
 
-\begin{itemize}
-\item Ocean color missions subject to pre-specified uncertainty requirements.
-\item Uncertainty difficult to estimate consistently
-\item Typical uncertainty estimation done using potentially problematic comparisons with e.g.;
-	\begin{itemize}
-	\item in-situ data \cite{BW:2006,Tle:2000}
-	\item other ocean color mission\cite{Hu:2013}
-\end{itemize}	 
-\end{itemize}
-\end{block}
+%\begin{itemize}
+%\item Ocean color missions subject to pre-specified uncertainty requirements.
+%\item Uncertainty difficult to estimate consistently
+%\item Typical uncertainty estimation done using potentially problematic comparisons\cite{BW:2006,Tle:2000,Hu:2013}	 
+%\end{itemize}
+%\end{block}
 
 
 %----------------------------------------------------------------------------------------
-%	METHODS
+%	METHODS - ditch that change to Approach
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Methods}
 \begin{itemize}
-\item Quantify noise propagation across bands by introducing perturbation at Lt
-\item Model signal-to-noise Ratio (SNR) as a function of top-of-the-atmosphere radiance ($L_t$)
-\item
+\item Model signal-to-noise Ratio (SNR) as a function of $L_t$\cite{Barnes:1994} .
+\item Spread in noise distribution given by $\sigma = \frac{L_t}{SNR}$.
+\item $L_{t,NOISE} = N(L_t, \sigma^2)$
+\item Propagate noise through atmospheric correction, retrieve remote sensing reflectance ($Rrs$).
+\item Use steps above to run Monte-Carlo Simulation.
 \end{itemize}
-
 \end{block}
+\begin{figure}
+\centering
+\textbf{Signal-to-noise ratio as a function of top-of-the-atmosphere radiance ($L_t$)}\par\medskip
+%\includegraphics[width=1.0\linewidth]{placeholder.jpg}
+\includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}
+\end{figure}
+
+% Add sensitivity analysis after this, just one of the plots.
+
+
 
 
 %----------------------------------------------------------------------------------------
@@ -143,17 +150,19 @@
 
 \begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
 %----------------------------------------------------------------------------------------
-%	METHODS
+%	RESULTS - remove sensitivity analysis figures here, 
+%  Do some side by side comparisons of distributions of 
+%  Rrs_unc for 
 %----------------------------------------------------------------------------------------
 \begin{block}{Results}
-\end{block}
+
 \begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column
 
 \begin{column}{\onecolwid}\vspace{-.6in} % The first column within column 2 (column 2.1)
 
 \begin{figure}
 %\includegraphics[width=1.0\linewidth]{placeholder.jpg}
-\includegraphics[width=1.0\linewidth]{Propagation.png}
+\includegraphics[width=1.1\linewidth]{Propagation443.pdf}
 \\{Figure caption}
 \end{figure}
 
@@ -165,20 +174,25 @@
 
 \begin{figure}
 %\includegraphics[width=1.0\linewidth]{placeholder.jpg}
-\includegraphics[width=1.0\linewidth]{placeholder.jpg}
+\includegraphics[width=1.1\linewidth]{Propagation490.pdf}
 \\{Figure caption}
 \end{figure}
 
-%----------------------------------------------------------------------------------------
+\begin{figure}
+\centering
+\textbf{My Title}\par\medskip
+\includegraphics[width=0.8\linewidth]{placeholder.jpg}
+\\{Figure Caption}
+\end{figure}
 
 \end{column} % End of column 2.2
 
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
-
+\end{block}
 \begin{figure}
 \centering
 \textbf{Global1}\par\medskip
-\includegraphics[width=0.8\linewidth]{global412.png}
+\includegraphics[width=1.0\linewidth]{global412.png}
 \\{Nunc tempus venenatis facilisis. Curabitur suscipit consequat eros non porttitor. Sed a massa dolor, id ornare enim}
 \end{figure}
 
@@ -188,12 +202,7 @@
 
 
 
-\begin{figure}
-\centering
-\textbf{My Title}\par\medskip
-\includegraphics[width=0.8\linewidth]{placeholder.jpg}
-\\{Nunc tempus venenatis facilisis. Curabitur suscipit consequat eros non porttitor. Sed a massa dolor, id ornare enim}
-\end{figure}
+
 
 %----------------------------------------------------------------------------------------
 
@@ -245,7 +254,7 @@
 
 \begin{block}{Acknowledgements}
 
-\small{\rmfamily{Special thanks to \textit{Don Shea} and \textit{Sean Bailey} for assistance with l2gen integration of the MC code, and to \textit{Tommy Owens} for running large scale MC simulations on the OBPG production system.}} \\
+\small{\rmfamily{We thank \textit{Don Shea} and \textit{Sean Bailey} for assistance with l2gen integration of the MC code, and to \textit{Tommy Owens} for running large scale MC simulations on the OBPG production system.}} \\
 
 \end{block}
 
