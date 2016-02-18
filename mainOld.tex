@@ -24,10 +24,8 @@
 
 \documentclass[final]{beamer}
 
-\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
-
+\usepackage[scale=1.1]{beamerposter} % Use the beamerposter package for laying out the poster
 \usetheme{confposter} % Use the confposter theme supplied with this template
-
 \setbeamercolor{block title}{fg=ngreen,bg=white} % Colors of the block titles
 \setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
 \setbeamercolor{block alerted title}{fg=white,bg=dblue!70} % Colors of the highlighted block titles
@@ -46,12 +44,12 @@
 \newlength{\onecolwid}
 \newlength{\twocolwid}
 \newlength{\threecolwid}
-\setlength{\paperwidth}{48in} % A0 width: 46.8in
-\setlength{\paperheight}{36in} % A0 height: 33.1in
-\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
+\setlength{\paperwidth}{45in} % A0 width: 46.8in
+\setlength{\paperheight}{42in} % A0 height: 33.1in
+\setlength{\sepwid}{0.005\paperwidth} % Separation width (white space) between columns
 \setlength{\onecolwid}{0.22\paperwidth} % Width of one column
-\setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
-\setlength{\threecolwid}{0.708\paperwidth} % Width of three columns
+\setlength{\twocolwid}{0.445\paperwidth} % Width of two columns%was 0.464
+\setlength{\threecolwid}{0.67\paperwidth} % Width of three columns
 \setlength{\topmargin}{-0.5in} % Reduce the top margin size
 %-----------------------------------------------------------
 
@@ -65,9 +63,8 @@
 
 \title{A Monte-Carlo based approach for estimating \\remote sensing reflectance uncertainty} % Poster title
 
-\author{Erdem M. Karak\"{o}yl\"{u}$^{1,2}$ \and Bryan Franz$^{1}$} % Author(s)
-\institute{1: Ocean Biology Processing Group - NASA Goddard Space Flight Center\\
-           2: Science Applications International Corporation } % Institution(s)
+\author{Erdem M. Karak\"{o}yl\"{u} \and Bryan Franz} % Author(s)
+\institute{NASA Goddard Space Flight Center, Greenbelt, MD, 20771} % Institution(s)
 
 %----------------------------------------------------------------------------------------
 
@@ -76,14 +73,14 @@
 \addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
 \addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
 
-\setlength{\belowcaptionskip}{2ex} % White space under figures
+%\setlength{\belowcaptionskip}{2ex} % White space under figures
 \setlength\belowdisplayshortskip{2ex} % White space under equations
 
 \begin{frame}[t] % The whole poster is enclosed in one beamer frame
 
 \begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
 
-\begin{column}{\sepwid}\end{column} % Empty spacer column
+%\begin{column}{\sepwid}\end{column} % Empty spacer column
 
 \begin{column}{\onecolwid} % The first column
 
@@ -93,12 +90,11 @@
 
 \begin{alertblock}{Objectives}
 
-Lorem ipsum dolor sit amet, consectetur, nunc tellus pulvinar tortor, commodo eleifend risus arcu sed odio:
 \begin{itemize}
-\item Mollis dignissim, magna augue tincidunt dolor, interdum vestibulum urna
-\item Sed aliquet luctus lectus, eget aliquet leo ullamcorper consequat. Vivamus eros sem, iaculis ut euismod non, sollicitudin vel orci.
-\item Nascetur ridiculus mus.  
-\item Euismod non erat. Nam ultricies pellentesque nunc, ultrices volutpat nisl ultrices a.
+\item Implement self-contained sensor-dependent (SeaWiFS showcased) noise model.
+\item Characterize noise propagation due to atmospheric correction.
+\item Characterize impact of noise in near-infrared bands
+\item Generate remote sensing reflectance uncertainty product.
 \end{itemize}
 
 \end{alertblock}
@@ -108,158 +104,166 @@ Lorem ipsum dolor sit amet, consectetur, nunc tellus pulvinar tortor, commodo el
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Introduction}
-
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo molestie porta. Sed ultrices scelerisque sapien ac commodo. Donec ut volutpat elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
-
-This statement requires citation \cite{Smith:2012qr}.
-
+\begin{itemize}
+\item Satellite borne ocean color remote sensors measure \textbf{top-of-the-atmosphere radiance ($L_t$)}
+\item $L_t$ is used to derive \textbf{remote sensing reflectance ($Rrs$)}, from which other  properties of interest are obtained.
+\item Along the way, uncertainties are accumulated, but remain illusive as they are difficult to estimate consistently.
+\item Typical uncertainty estimation done using potentially problematic comparisons with in-situ data or other remote sensing missions\cite{BW:2006,Tle:2000,Hu:2013}.These problems arise because of spatial and temporal scale differences between measurements, and the uncertainties inherent in the reference methods.
+\item Addressing uncertainties consistently requires self-contained approach to tease out  some of the noise that contributes to the overall uncertainty budget.
+\item Here, we focus on atmospheric correction as a contribution to the uncertainty budget.
+\end{itemize}
 \end{block}
 
-%------------------------------------------------
-
-\begin{figure}
-\includegraphics[width=1.0\linewidth]{placeholder.jpg}
-\caption{Figure caption}
-\end{figure}
 
 %----------------------------------------------------------------------------------------
+%	METHODS - ditch that change to Approach
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Approach}
+\begin{itemize}
+\item All data shown is from the SeaWiFS sensor.
+\item Broadly this approach is divided into two parts
+\item Sensitivity analysis:
+	
+	\item Perturb $L_t$ by +0.1\% collect   $Rrs$ response 
+	\item Characterize noise propagation through atmospheric correction.
+	\item Characterize impact single-band $L_t$ perturbation on the $Rrs$ spectrum
+
+\item Monte-Carlo simulation:
+
+	\item Signal-to-noise Ratio (SNR) modeled as a function of measured $L_t$, following \cite{Barnes:1994}.
+	\item Spread in noise distribution given by $\sigma = \frac{L_t}{SNR}$.
+	\item $L_{t,noise} = \mathcal{N}(L_t, \sigma)$
+	\item Propagate noise through atmospheric correction, retrieve remote sensing reflectance ($Rrs$).
+	\item Repeat many times.
+
+\item Perform experiment with perturbation of visible bands only.
+\item Perform experiment with perturbation of visible and near infra-red bands.
+\item Perform experiments for a number of water types.
+\end{itemize}
+\end{block}
+
+
 
 \end{column} % End of the first column
 
-\begin{column}{\sepwid}\end{column} % Empty spacer column
+%\begin{column}{0.5\sepwid}\end{column} % Empty spacer column
 
 \begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
+%----------------------------------------------------------------------------------------
+%	RESULTS - remove sensitivity analysis figures here, 
+%  Do some side by side comparisons of distributions of 
+%  Rrs_unc for 
+%----------------------------------------------------------------------------------------
+\begin{block}{Results}
 
+% Add sensitivity analysis after this, just one of the plots.
 \begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column
+% text here?
+\begin{column}{\onecolwid}\vspace{-.6in} 
+%------------------------------ The first column within column 2 (column 2.1)
 
-\begin{column}{\onecolwid}\vspace{-.6in} % The first column within column 2 (column 2.1)
+\begin{table}
+\centering
+\vspace{2ex}
+Rrs response to single-band perturbation. 
+\begin{tabular}{|*{7}{c|}}
+\toprule
+\textbf{Perturbed} & \multicolumn{6}{|c|}{\textbf{\% change in Rrs}}\\
+\cline{2-7}
+\textbf{Lt} (+0.1\%) & \textbf{412} & \textbf{443} & \textbf{490} & \textbf{510} & \textbf{555} & \textbf{670}\\
+\midrule
+Lt(412) &  1.14 & -- & -- & -- & -- & --\\  
+Lt(443) & 0.22 & 0.97 & 0.21 & 0.22 & 0.22 &  0.53\\
+Lt(490) & 0.22 & 0.21 & 0.79 & 0.22 & 0.23 &  0.93\\
+Lt(510) & 0.97 & 0.62 & 0.41 &  1.0 & 0.35 & 0.84\\
+Lt(555) & 0.23 & 0.22 & 0.23 & 0.24 & 1.6 & 1.2\\
+Lt(670) & 0.51 & 0.38 & 0.27 & 0.32 & 0.31 &  5.0\\
+Lt(765) & 0.90 & 0.92 & 0.95 &  1.5 &  2.4 &  7.5\\
+Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
+\bottomrule
+\end{tabular}
+\\{blah blah blah Caption caption caption}
+\end{table}
 
-%----------------------------------------------------------------------------------------
-%	MATERIALS
-%----------------------------------------------------------------------------------------
+% ------- NOISE MODEL
 
-\begin{block}{Materials}
+\begin{figure}
+\centering
+\textbf{Matching $L_t$ to shot noise via SNR model}\par\medskip
+%\includegraphics[width=1.0\linewidth]{placeholder.jpg}
+\includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}
+\\{For each pixel in a scene (purple histogram) $L_t(\lambda)$  is matched to a  corresponding noise  model parameter $\sigma$ by way of an SNR model. $\sigma$ then drives the}
+\end{figure}
 
-The following materials were required to complete the research:
 
-\begin{itemize}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\item Eu facilisis est tempus quis
-\end{itemize}
+\begin{figure}
+\vspace{2ex}
+\caption{My Title}\par%\medskip
+\vspace{-1in}
+\includegraphics[width=1.0\linewidth]{Vis_vs_VISNIR.pdf}
+\end{figure}
 
-The materials were prepared according to the steps outlined below:
-
-\begin{enumerate}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\item Curabitur pellentesque dignissim
-\end{enumerate}
-
-\end{block}
-
-%----------------------------------------------------------------------------------------
-
-\end{column} % End of column 2.1
+\end{column} 
+% --------------------------- End of column 2.1
 
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
-%----------------------------------------------------------------------------------------
-%	METHODS
-%----------------------------------------------------------------------------------------
 
-\begin{block}{Methods}
+%---------- First Global ------------------------
+\begin{figure}
+\centering
+\textbf{Rrs(412) uncertainty}\par\medskip
+\includegraphics[width=1.0\linewidth]{rrsPercUnc412.png}
+\end{figure}
+%----------- Second Global -------------------
+\begin{figure}
+\centering
+\textbf{Rrs(555) uncertainty}\par\medskip
+\includegraphics[width=1.0\linewidth]{rrsPercUnc443.png}
+\end{figure}
 
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
+\begin{figure}
+\centering
+\textbf{Rrs(555) uncertainty}\par\medskip
+\includegraphics[width=1.0\linewidth]{rrsPercUnc490.png}
+\end{figure}
 
-\end{block}
+\begin{figure}
+\centering
+\textbf{Rrs(555) uncertainty}\par\medskip
+\includegraphics[width=1.0\linewidth]{rrsPercUnc510.png}
+\end{figure}
 
-%----------------------------------------------------------------------------------------
+\begin{figure}
+\centering
+\textbf{Rrs(555) uncertainty}\par\medskip
+\includegraphics[width=1.0\linewidth]{rrsPercUnc555.png}
+\end{figure}
+
+%---------- Colorbar ------------------------
+\begin{figure}
+\centering
+\includegraphics[width=1.0\linewidth]{rrsUNCcolorbar.png}
+\\{Rrs uncertainty (\%)}\par\medskip
+\end{figure}
 
 \end{column} % End of column 2.2
 
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
+\end{block}
+% global412 was here
 
-%----------------------------------------------------------------------------------------
-%	IMPORTANT RESULT
-%----------------------------------------------------------------------------------------
+%global555 was here
 
-\begin{alertblock}{Important Result}
-
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo molestie porta. Sed ultrices scelerisque sapien ac commodo. Donec ut volutpat elit.
-
-\end{alertblock} 
-
-%----------------------------------------------------------------------------------------
 
 \begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
-
 \begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
 
-%----------------------------------------------------------------------------------------
-%	MATHEMATICAL SECTION
-%----------------------------------------------------------------------------------------
 
-\begin{block}{Mathematical Section}
 
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
-  
-\begin{equation}
-E = mc^{2}
-\label{eqn:Einstein}
-\end{equation}
 
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
 
-\begin{equation}
-\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-\label{eq:refname}
-\end{equation}
-
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
-
-\begin{equation}
-\kappa =\frac{\xi}{E_{\mathrm{max}}} %\mathbb{ZNR}
-\end{equation}
-
-\end{block}
-
-%----------------------------------------------------------------------------------------
-
-\end{column} % End of column 2.1
-
-\begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
-
-%----------------------------------------------------------------------------------------
-%	RESULTS
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Results}
-
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{placeholder.jpg}
-\caption{Figure caption}
-\end{figure}
-
-Nunc tempus venenatis facilisis. Curabitur suscipit consequat eros non porttitor. Sed a massa dolor, id ornare enim:
-
-\begin{table}
-\vspace{2ex}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-
-\end{block}
 
 %----------------------------------------------------------------------------------------
 
@@ -269,44 +273,37 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \end{column} % End of the second column
 
-\begin{column}{\sepwid}\end{column} % Empty spacer column
+%\begin{column}{\sepwid}\end{column} % Empty spacer column
 
 \begin{column}{\onecolwid} % The third column
 
 %----------------------------------------------------------------------------------------
-%	CONCLUSION
+%	What's next?
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Conclusion}
-
-Nunc tempus venenatis facilisis. \textbf{Curabitur suscipit} consequat eros non porttitor. Sed a massa dolor, id ornare enim. Fusce quis massa dictum tortor \textbf{tincidunt mattis}. Donec quam est, lobortis quis pretium at, laoreet scelerisque lacus. Nam quis odio enim, in molestie libero. Vivamus cursus mi at \textit{nulla elementum sollicitudin}.
-
-\end{block}
-
-%----------------------------------------------------------------------------------------
-%	ADDITIONAL INFORMATION
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Additional Information}
-
-Maecenas ultricies feugiat velit non mattis. Fusce tempus arcu id ligula varius dictum. 
+\begin{block}{Next Steps}
 \begin{itemize}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
+\item Extend MC simulations to other sensors.
+\item MC simulations computationally costly;
+	\begin{itemize}
+	\item Finding an alternative to build on this work, a priority
+	\item Develop machine learning (ML) approach (e.g. neural network);
+	\item Identify uncertainty drivers in MC as potential inputs to ML;
+ 	\item Use ML to shorten uncertainty product generation to one run. 
+	\end{itemize}
 \end{itemize}
 
 \end{block}
+
 
 %----------------------------------------------------------------------------------------
 %	REFERENCES
 %----------------------------------------------------------------------------------------
 
 \begin{block}{References}
-
-\nocite{*} % Insert publications even if they are not cited in the poster
-\small{\bibliographystyle{unsrt}
-\bibliography{sample}\vspace{0.75in}}
+\nocite{} % Insert publications even if they are not cited in the poster
+\small{\bibliographystyle{IEEEtran}
+\bibliography{poster}\vspace{0.75in}}
 
 \end{block}
 
@@ -318,7 +315,7 @@ Maecenas ultricies feugiat velit non mattis. Fusce tempus arcu id ligula varius 
 
 \begin{block}{Acknowledgements}
 
-\small{\rmfamily{Nam mollis tristique neque eu luctus. Suspendisse rutrum congue nisi sed convallis. Aenean id neque dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.}} \\
+\small{\rmfamily{We thank \textit{Don Shea} and \textit{Sean Bailey} for assistance with l2gen integration of the MC code, and to \textit{Tommy Owens} for running large scale MC simulations on the OBPG production system.}} \\
 
 \end{block}
 
@@ -341,14 +338,14 @@ Maecenas ultricies feugiat velit non mattis. Fusce tempus arcu id ligula varius 
 
 \begin{center}
 \begin{tabular}{ccc}
-\includegraphics[width=0.4\linewidth]{logo.png} & \hfill & \includegraphics[width=0.4\linewidth]{logo.png}
+\includegraphics[width=0.4\linewidth]{NASA_logo.png} & \hfill 
 \end{tabular}
 \end{center}
 
 %----------------------------------------------------------------------------------------
 
 \end{column} % End of the third column
-
+\begin{column}{\sepwid}\end{column} % Empty spacer column
 \end{columns} % End of all the columns in the poster
 
 \end{frame} % End of the enclosing frame

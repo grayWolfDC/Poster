@@ -54,9 +54,8 @@
 %-----------------------------------------------------------
 
 \usepackage{graphicx}  % Required for including images
-
 \usepackage{booktabs} % Top and bottom rules for tables
-
+\usepackage{framed, caption}
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION 
 %----------------------------------------------------------------------------------------
@@ -112,7 +111,6 @@
 \end{itemize}
 \end{block}
 
-
 %----------------------------------------------------------------------------------------
 %	METHODS - ditch that change to Approach
 %----------------------------------------------------------------------------------------
@@ -120,20 +118,17 @@
 \begin{block}{Approach}
 \begin{itemize}
 \item All data shown is from the SeaWiFS sensor.
-\item Signal to noise Ration (SNR) is modeled (shown below) as a function of measured $L_t$
-\begin{figure}
-\centering
-\caption{Matching $L_t$ to shot noise via SNR model}
-%\includegraphics[width=1.0\linewidth]{placeholder.jpg}
-\fbox{\includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}}
-
-\end{figure}
+\item Signal to noise Ration (SNR) is modeled (Fig.1) as a function of measured $L_t$
 \item Spread in noise distribution is given by $\sigma = \frac{L_t}{SNR}$.
 \item A perturbed $L_{t,noise}$ is drawn from $\mathcal{N}(L_t, \sigma)$
 \end{itemize}
+
+\begin{framed}
+\captionof{figure}{Modeling SNR as a function of $L_t$}
+\includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}
+\label{fig:snf model}
+\end{framed}
 \end{block}
-
-
 
 \end{column} % End of the first column
 
@@ -153,9 +148,9 @@
 % text here?
 \begin{column}{\onecolwid}\vspace{-.6in} 
 %------------------------------ The first column within column 2 (column 2.1)
-
-\begin{table}
-\centering
+%\begin{table}
+\begin{framed}
+\begin{center}
 \vspace{2ex}
 \begin{tabular}{|*{7}{c|}}
 \toprule
@@ -173,42 +168,44 @@ Lt(765) & 0.90 & 0.92 & 0.95 &  1.5 &  2.4 &  7.5\\
 Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \bottomrule
 \end{tabular}
-\caption{Average Rrs response to single-band one-time perturbation. Note that for  $\lambda$>412 there  Predictably the main diagonal shows some of the largest responses. However, some the largest responses can be observed for perturbations of near-infra red bands}
-\end{table}
-
+\captionof{table}{Average Rrs response to single-band one-time perturbation. Note that for  $\lambda$>412 there  Predictably, the main diagonal shows larger responses in each row, reflecting the band that was perturbed. However, some of the largest responses can be observed across all bands following perturbations of near-infra red bands ($L_t(765)$ and $L_t(865)$. These are instrumental in the atmospheric correction applied to obtained Rrs}
+\end{center}
+\%end{table}
+\end{framed}
 \end{column} 
 % --------------------------- End of column 2.1
-
+\begin{column}{0.5\sepwid}\end{column} % Empty spacer column
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
-\begin{figure}
-\vspace{2ex}
-\caption{ Difference in $Rrs$ response between an MC simulation with visible and near infra-red bands are perturbed and one where only visible bands are perturbed.}
-\includegraphics[width=1.0\linewidth]{Vis_vs_VISNIR.pdf}
-\end{figure}
+\vspace{3ex}
+\begin{framed}
+\captionof{figure}{ Difference in $Rrs$ response between an MC simulation with visible and near infra-red bands are perturbed and one where only visible bands are perturbed.}
+\includegraphics[trim =0 0 0 100,clip,width=1.1\linewidth]{Vis_vs_VISNIR.pdf}
+\end{framed}
+
 \end{column} % End of column 2.2
 
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
 
 \end{block}
 %---------- First Global ------------------------
-\begin{figure}
-\centering
-\textbf{Rrs(412) uncertainty}\par\medskip
+\begin{framed}
+\begin{center}
+\captionof{figure}{Rrs uncertainty calculated for a global scene -- date--, resulting from a 1000-run MC simulation. Top panel: $Rrs(412)$ uncertainty. Bottom panel: $Rrs(555)$ uncertainty. Both images are on the same scale (\textit{cf.} color bar). Areas of high radiance in the corresponding band (e.g. open ocean in the case of $Rrs(412)$ are more likely to result in lower uncertainty  and vice versa. }
 \includegraphics[width=1.0\linewidth,height=20cm]{rrsPercUnc412.png}
-\end{figure}
+%\end{figure}
 
 %---------- Colorbar ------------------------
-\begin{figure}
-\includegraphics[width=0.5\linewidth,keepaspectratio]{rrsUNCcolorbar.png}
-\end{figure}
+%\begin{figure}
+\includegraphics[trim =0 10 0 50,clip,width=0.5\linewidth,keepaspectratio]{rrsUNCcolorbar.png}
+%\end{figure}
 
-\begin{figure}
-\centering
-\textbf{Rrs(555) uncertainty}\par\medskip
-\includegraphics[width=1.0\linewidth,height=20cm]{rrsPercUnc555.png}
-\end{figure}
+%\begin{figure}
 
+%\caption{Rrs(555) uncertainty (\%)}
+\includegraphics[trim =0 0 0 0,clip,width=1.0\linewidth,height=20cm]{rrsPercUnc555.png}
+\end{center}
+\end{framed}
 
 \begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
 \begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
@@ -231,10 +228,18 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \begin{column}{\onecolwid} % The third column
 
 %----------------------------------------------------------------------------------------
+%	Summary
+%----------------------------------------------------------------------------------------
+\begin{block}{Summary}
+\begin{itemize}
+\item atmospheric correction contributes on average to 
+\end{itemize}
+\end{block}
+%----------------------------------------------------------------------------------------
 %	What's next?
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Next Steps}
+\begin{block}{Next...}
 \begin{itemize}
 \item Extend MC simulations to other sensors.
 \item MC simulations computationally costly;
