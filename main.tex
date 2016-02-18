@@ -24,7 +24,7 @@
 
 \documentclass[final]{beamer}
 
-\usepackage[scale=1.1]{beamerposter} % Use the beamerposter package for laying out the poster
+\usepackage[scale=1.0]{beamerposter} % Use the beamerposter package for laying out the poster
 \usetheme{confposter} % Use the confposter theme supplied with this template
 \setbeamercolor{block title}{fg=ngreen,bg=white} % Colors of the block titles
 \setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
@@ -45,7 +45,7 @@
 \newlength{\twocolwid}
 \newlength{\threecolwid}
 \setlength{\paperwidth}{45in} % A0 width: 46.8in
-\setlength{\paperheight}{42in} % A0 height: 33.1in
+\setlength{\paperheight}{41in} % A0 height: 33.1in
 \setlength{\sepwid}{0.005\paperwidth} % Separation width (white space) between columns
 \setlength{\onecolwid}{0.22\paperwidth} % Width of one column
 \setlength{\twocolwid}{0.445\paperwidth} % Width of two columns%was 0.464
@@ -62,7 +62,7 @@
 
 \title{A Monte-Carlo based approach for estimating \\remote sensing reflectance uncertainty} % Poster title
 
-\author{Erdem M. Karak\"{o}yl\"{u} \and Bryan Franz} % Author(s)
+\author{Erdem M. Karak\"{o}yl\"{u} \and Bryan A. Franz} % Author(s)
 \institute{NASA Goddard Space Flight Center, Greenbelt, MD, 20771} % Institution(s)
 
 %----------------------------------------------------------------------------------------
@@ -103,11 +103,11 @@
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Introduction}
-\begin{itemize}
-\item Satellite borne ocean color remote sensors measure \textbf{top-of-the-atmosphere radiance ($L_T$)}
-\item $L_T$ is used to derive \textbf{remote sensing reflectance ($Rrs$)}, from which other  properties of interest are obtained.
-\item Typical uncertainty estimation done using potentially problematic comparisons with in-situ data or other remote sensing missions\cite{BW:2006,Tle:2000,Hu:2013}.
-\item Consequently a product characterizing $Rrs$ uncertainty has remained illusive.
+	\begin{itemize}
+	\item Satellite borne ocean color remote sensors measure \textbf{top-of-the-atmosphere radiance ($L_T$)}
+	\item $L_T$ is used to derive \textbf{remote sensing reflectance ($Rrs$)}, from which other  properties of interest are obtained.
+	\item Typical uncertainty estimation done using potentially problematic comparisons with in-situ data or other remote sensing missions\cite{BW:2006,Tle:2000,Hu:2013}.
+	\item Consequently a product characterizing $Rrs$ uncertainty has remained illusive.
 \end{itemize}
 \end{block}
 
@@ -117,14 +117,18 @@
 
 \begin{block}{Approach}
 \begin{itemize}
-\item All data shown is from the SeaWiFS mission.
-\item Signal to noise Ratio (SNR) is modeled (Figure.1) as a function of measured $L_T$
-\item Spread in noise distribution is given by $\sigma = \frac{L_T}{SNR}$.
-\item A perturbed $L_{T,noise}$ is drawn from $\mathcal{N}(L_T, \sigma)$
+	\item All data shown is from the SeaWiFS mission.
+	\item Generally, $L_T$ is perturbed, resulting $Rrs$ noise quantifies noise propagation.
+	\item Using this characterization to estimate $Rrs$ uncertainty is as follows.
+	\item Signal-to-Noise-Ratio (SNR) modeled (Figure.1) as a function of measured $L_T$\cite{Barnes:1994}.
+	\item Noise distribution spread: $\sigma = \frac{L_T}{SNR}$.
+	\item Draw random $L_{T,noise}$ from $\mathcal{N}(L_T, \sigma)$.
+	\item Monte-Carlo (MC) simulation: repeat the above to converge to  $Rrs$ uncertainty.
+	\item Run experiments in variety of conditions; use select bands, different geographical areas, etc.
 \end{itemize}
 
 \begin{framed}
-\captionof{figure}{Modeling SNR as a function of $L_T$. Black line is the SNR model. The purple histogram illustrates the relationship of actual data (here, from an open ocean granule) to the model.  }
+\captionof{figure}{Modeling SNR as a function of $L_T$. Purple histogram illustrates relationship between data from eight SeaWiFS bands and corresponding models}
 \includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}
 \label{fig:snf model}
 \end{framed}
@@ -168,7 +172,7 @@ Lt(765) & 0.90 & 0.92 & 0.95 &  1.5 &  2.4 &  7.5\\
 Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \bottomrule
 \end{tabular}
-\captionof{table}{Average Rrs response to single-band one-time perturbation. Note that for  $\lambda$>412 there  Predictably, the main diagonal shows larger responses in each row, reflecting the band that was perturbed. However, some of the largest responses can be observed across all bands following perturbations of near-infra red bands ($L_T(765)$ and $L_T(865)$. These are instrumental in the atmospheric correction applied to obtained Rrs}
+\captionof{table}{Average Rrs response to single-band one-time (not MC simulation) perturbation. Only perturbation at $\lambda$=412 does not result in Rrs uncertainty in the rest of the spectrum. Predictably, the main diagonal shows larger responses in each row, reflecting the band that was perturbed. However, some of the largest responses can be observed across all bands following perturbations of near-infra red bands, $L_T(765)$ and $L_T(865)$, that are instrumental in the atmospheric correction applied to obtained Rrs.}
 \end{center}
 %end{table}
 \end{framed}
@@ -177,33 +181,31 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \begin{column}{0.5\sepwid}\end{column} % Empty spacer column
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
-\vspace{3ex}
+\vspace{5ex}
 \begin{framed}
 \captionof{figure}{ Difference in $Rrs$ response between an MC simulation with visible and near infra-red bands are perturbed and one where only visible bands are perturbed.}
-\includegraphics[trim =0 0 0 100,clip,width=1.1\linewidth]{Vis_vs_VISNIR.pdf}
+\includegraphics[trim =0 0 0 100,clip,width=1.1\linewidth]{Vis_vs_VISNIRminorticks.pdf}
 \end{framed}
-
 \end{column} % End of column 2.2
-
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
-
 \end{block}
 %---------- First Global ------------------------
+\vspace{2ex}
 \begin{framed}
 \begin{center}
-\captionof{figure}{Rrs uncertainty calculated for a global scene -- date--, resulting from a 1000-run MC simulation. Top panel: $Rrs(412 - blue)$ uncertainty. Bottom panel: $Rrs(555)$ uncertainty. Both images are on the same scale (\textit{cf.} color bar). Areas of high radiance in the corresponding band (e.g. open ocean in the case of $Rrs(412)$) are more likely to result in lower uncertainty  and vice versa. }
+\captionof{figure}{\textbf{Rrs \% uncertainty} calculated for a global scene -- date--, resulting from a 1000-run MC simulation. Top panel: $Rrs(412 - blue)$ uncertainty. Bottom panel: $Rrs(555 - yellow/green)$ uncertainty. Both images are on the same scale (\textit{cf.} color bar). Areas of high radiance in the corresponding band (e.g. open ocean in the case of $Rrs(412)$) are more likely to result in lower uncertainty  and vice versa. }
 \includegraphics[width=1.0\linewidth,height=20cm]{rrsPercUnc412.png}
 %\end{figure}
-
 %---------- Colorbar ------------------------
 %\begin{figure}
-\includegraphics[trim =0 10 0 50,clip,width=0.5\linewidth,keepaspectratio]{rrsUNCcolorbar.png}
 %\end{figure}
 
 %\begin{figure}
 
 %\caption{Rrs(555) uncertainty (\%)}
 \includegraphics[trim =0 0 0 0,clip,width=1.0\linewidth,height=20cm]{rrsPercUnc555.png}
+
+\includegraphics[trim =0 10 0 0,clip,width=0.5\linewidth,keepaspectratio]{rrsUNCcolorbar.png}
 \end{center}
 \end{framed}
 
@@ -232,12 +234,12 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 %----------------------------------------------------------------------------------------
 \begin{block}{Summary}
 \begin{itemize}
-\item $L_T$ noise amplifies $10x - 70x$ as it propagates to $Rrs$
+\item $L_T$ noise amplifies $10\times - 70\times$ as it is propagated to $Rrs$.
 \item Noise propagation is subject to cross-band contamination.
-\item NIR bands (atmospheric correction) contribute significantly  noise amplification 
-\item MC simulation converges successfully to yield Rrs uncertainty 
-\item For real $L_T$ data
-\item Higher uncertainty found in complex coastal waters
+\item NIR bands (atmospheric correction) contribute significantly  noise amplification. 
+\item MC simulation converges successfully to yield Rrs uncertainty. 
+\item Rrs uncertainty for most of the world ocean hovers around 1-10\%.
+\item Higher uncertainty found in complex coastal waters.
 \end{itemize}
 \end{block}
 %----------------------------------------------------------------------------------------
@@ -247,10 +249,11 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \begin{block}{Next...}
 \begin{itemize}
 \item Extend MC simulations to other sensors.
+\item Incorporate uncertainty in ancillary inputs (pressure, windspeed, humidity, ozone)
 \item MC simulations computationally costly;
 	\begin{itemize}
-	\item Finding an alternative to build on this work, a priority
-	\item Develop machine learning (ML) approach (e.g. neural network);
+	\item Finding an alternative to build on this work is a priority.
+	\item One possible solution: develop machine learning (ML) approach (e.g. neural network);
 	\item Identify uncertainty drivers in MC as potential inputs to ML;
  	\item Use ML to shorten uncertainty product generation to one run. 
 	\end{itemize}
@@ -278,7 +281,7 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 
 \begin{block}{Acknowledgements}
 
-\small{\rmfamily{We thank \textit{Don Shea} and \textit{Sean Bailey} for assistance with l2gen integration of the MC code, and to \textit{Tommy Owens} for running large scale MC simulations on the OBPG production system.}} \\
+\small{\rmfamily{We thank folks at the Ocean Biology Processing Group at Goddard Space Flight Center; in particular  \textit{Don Shea} and \textit{Sean Bailey} for assistance with integration of the MC code into the l2gen processing software, and to \textit{Tommy Owens} for running large scale MC simulations on the Ocean Data  Processing System}} \\
 
 \end{block}
 
@@ -288,7 +291,7 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 
 \setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-
+\vspace{2ex}
 \begin{alertblock}{Contact Information}
 
 \begin{itemize}
@@ -298,10 +301,10 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \end{itemize}
 
 \end{alertblock}
-
+\vspace{2ex}
 \begin{center}
 \begin{tabular}{ccc}
-\includegraphics[width=0.4\linewidth]{NASA_logo.png} & \hfill 
+\includegraphics[width=0.5\linewidth]{meatball.pdf} & \hfill 
 \end{tabular}
 \end{center}
 
