@@ -104,8 +104,8 @@
 
 \begin{block}{Introduction}
 \begin{itemize}
-\item Satellite borne ocean color remote sensors measure \textbf{top-of-the-atmosphere radiance ($L_t$)}
-\item $L_t$ is used to derive \textbf{remote sensing reflectance ($Rrs$)}, from which other  properties of interest are obtained.
+\item Satellite borne ocean color remote sensors measure \textbf{top-of-the-atmosphere radiance ($L_T$)}
+\item $L_T$ is used to derive \textbf{remote sensing reflectance ($Rrs$)}, from which other  properties of interest are obtained.
 \item Typical uncertainty estimation done using potentially problematic comparisons with in-situ data or other remote sensing missions\cite{BW:2006,Tle:2000,Hu:2013}.
 \item Consequently a product characterizing $Rrs$ uncertainty has remained illusive.
 \end{itemize}
@@ -117,14 +117,14 @@
 
 \begin{block}{Approach}
 \begin{itemize}
-\item All data shown is from the SeaWiFS sensor.
-\item Signal to noise Ration (SNR) is modeled (Fig.1) as a function of measured $L_t$
-\item Spread in noise distribution is given by $\sigma = \frac{L_t}{SNR}$.
-\item A perturbed $L_{t,noise}$ is drawn from $\mathcal{N}(L_t, \sigma)$
+\item All data shown is from the SeaWiFS mission.
+\item Signal to noise Ratio (SNR) is modeled (Figure.1) as a function of measured $L_T$
+\item Spread in noise distribution is given by $\sigma = \frac{L_T}{SNR}$.
+\item A perturbed $L_{T,noise}$ is drawn from $\mathcal{N}(L_T, \sigma)$
 \end{itemize}
 
 \begin{framed}
-\captionof{figure}{Modeling SNR as a function of $L_t$}
+\captionof{figure}{Modeling SNR as a function of $L_T$. Black line is the SNR model. The purple histogram illustrates the relationship of actual data (here, from an open ocean granule) to the model.  }
 \includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}
 \label{fig:snf model}
 \end{framed}
@@ -168,9 +168,9 @@ Lt(765) & 0.90 & 0.92 & 0.95 &  1.5 &  2.4 &  7.5\\
 Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \bottomrule
 \end{tabular}
-\captionof{table}{Average Rrs response to single-band one-time perturbation. Note that for  $\lambda$>412 there  Predictably, the main diagonal shows larger responses in each row, reflecting the band that was perturbed. However, some of the largest responses can be observed across all bands following perturbations of near-infra red bands ($L_t(765)$ and $L_t(865)$. These are instrumental in the atmospheric correction applied to obtained Rrs}
+\captionof{table}{Average Rrs response to single-band one-time perturbation. Note that for  $\lambda$>412 there  Predictably, the main diagonal shows larger responses in each row, reflecting the band that was perturbed. However, some of the largest responses can be observed across all bands following perturbations of near-infra red bands ($L_T(765)$ and $L_T(865)$. These are instrumental in the atmospheric correction applied to obtained Rrs}
 \end{center}
-\%end{table}
+%end{table}
 \end{framed}
 \end{column} 
 % --------------------------- End of column 2.1
@@ -191,7 +191,7 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 %---------- First Global ------------------------
 \begin{framed}
 \begin{center}
-\captionof{figure}{Rrs uncertainty calculated for a global scene -- date--, resulting from a 1000-run MC simulation. Top panel: $Rrs(412)$ uncertainty. Bottom panel: $Rrs(555)$ uncertainty. Both images are on the same scale (\textit{cf.} color bar). Areas of high radiance in the corresponding band (e.g. open ocean in the case of $Rrs(412)$ are more likely to result in lower uncertainty  and vice versa. }
+\captionof{figure}{Rrs uncertainty calculated for a global scene -- date--, resulting from a 1000-run MC simulation. Top panel: $Rrs(412 - blue)$ uncertainty. Bottom panel: $Rrs(555)$ uncertainty. Both images are on the same scale (\textit{cf.} color bar). Areas of high radiance in the corresponding band (e.g. open ocean in the case of $Rrs(412)$) are more likely to result in lower uncertainty  and vice versa. }
 \includegraphics[width=1.0\linewidth,height=20cm]{rrsPercUnc412.png}
 %\end{figure}
 
@@ -232,7 +232,12 @@ Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 %----------------------------------------------------------------------------------------
 \begin{block}{Summary}
 \begin{itemize}
-\item atmospheric correction contributes on average to 
+\item $L_T$ noise amplifies $10x - 70x$ as it propagates to $Rrs$
+\item Noise propagation is subject to cross-band contamination.
+\item NIR bands (atmospheric correction) contribute significantly  noise amplification 
+\item MC simulation converges successfully to yield Rrs uncertainty 
+\item For real $L_T$ data
+\item Higher uncertainty found in complex coastal waters
 \end{itemize}
 \end{block}
 %----------------------------------------------------------------------------------------
