@@ -105,12 +105,10 @@
 
 \begin{block}{Introduction}
 \begin{itemize}
-\item Satellite borne ocean color remote sensors measure \textbf{top of the atmosphere radiance ($L_t$)}
+\item Satellite borne ocean color remote sensors measure \textbf{top-of-the-atmosphere radiance ($L_t$)}
 \item $L_t$ is used to derive \textbf{remote sensing reflectance ($Rrs$)}, from which other  properties of interest are obtained.
-\item Along the way, uncertainties are accumulated, but remain illusive as they are difficult to estimate consistently.
 \item Typical uncertainty estimation done using potentially problematic comparisons with in-situ data or other remote sensing missions\cite{BW:2006,Tle:2000,Hu:2013}.
-\item These problems arise because of spatial and temporal scale differences between measurements, and the uncertainties inherent in the reference methods.
-\item To begin addressing uncertainties in a consistent manner, a self-contained approach is needed to tease out the some of the noise that contributes to the overall uncertainty budget.
+\item Consequently a product characterizing $Rrs$ uncertainty has remained illusive.
 \end{itemize}
 \end{block}
 
@@ -121,22 +119,20 @@
 
 \begin{block}{Approach}
 \begin{itemize}
-\item Signal-to-noise Ratio (SNR) is modeled as a function of measured $L_t$, following \cite{Barnes:1994}.
-\item Spread in noise distribution given by $\sigma = \frac{L_t}{SNR}$.
-\item $L_{t,NOISE} = \mathcal{N}(L_t, \sigma)$
-\item Propagate noise through atmospheric correction, retrieve remote sensing reflectance ($Rrs$).
-\item Use steps above to run Monte-Carlo Simulation.
+\item All data shown is from the SeaWiFS sensor.
+\item Signal to noise Ration (SNR) is modeled (shown below) as a function of measured $L_t$
+\begin{figure}
+\centering
+\caption{Matching $L_t$ to shot noise via SNR model}
+%\includegraphics[width=1.0\linewidth]{placeholder.jpg}
+\fbox{\includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}}
+
+\end{figure}
+\item Spread in noise distribution is given by $\sigma = \frac{L_t}{SNR}$.
+\item A perturbed $L_{t,noise}$ is drawn from $\mathcal{N}(L_t, \sigma)$
 \end{itemize}
 \end{block}
 
-
-\begin{figure}
-\centering
-\textbf{Matching $L_t$ to shot noise via SNR model}\par\medskip
-%\includegraphics[width=1.0\linewidth]{placeholder.jpg}
-\includegraphics[width=1.0\linewidth]{snrmodelLong.pdf}
-\\{For each pixel in a scene (purple histogram) $L_t(\lambda)$  is matched to a  corresponding noise  model parameter $\sigma$ by way of an SNR model. $\sigma$ then drives the}
-\end{figure}
 
 
 \end{column} % End of the first column
@@ -150,6 +146,7 @@
 %  Rrs_unc for 
 %----------------------------------------------------------------------------------------
 \begin{block}{Results}
+% ------- NOISE MODEL
 
 % Add sensitivity analysis after this, just one of the plots.
 \begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column
@@ -160,7 +157,6 @@
 \begin{table}
 \centering
 \vspace{2ex}
-\caption{Results of sensitivity analysis for a selection of bands}
 \begin{tabular}{|*{7}{c|}}
 \toprule
 \textbf{Perturbed} & \multicolumn{6}{|c|}{\textbf{\% change in Rrs}}\\
@@ -177,45 +173,41 @@ Lt(765) & 0.90 & 0.92 & 0.95 &  1.5 &  2.4 &  7.5\\
 Lt(865) & 0.66 & 0.65 & 0.65 &  1.0 &  1.5 &  4.3\\
 \bottomrule
 \end{tabular}
-\\{blah blah blah Caption caption caption}
+\caption{Average Rrs response to single-band one-time perturbation. Note that for  $\lambda$>412 there  Predictably the main diagonal shows some of the largest responses. However, some the largest responses can be observed for perturbations of near-infra red bands}
 \end{table}
-%---------- First Global ------------------------
-\begin{figure}
-\vspace{5in}
-\centering
-\textbf{Rrs(412) uncertainty}\par\medskip
-\includegraphics[width=1.0\linewidth]{rrsPercUnc412.png}
-\end{figure}
+
 \end{column} 
 % --------------------------- End of column 2.1
 
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
-
 \begin{figure}
 \vspace{2ex}
-\caption{My Title}\par%\medskip
-\vspace{-1in}
+\caption{ Difference in $Rrs$ response between an MC simulation with visible and near infra-red bands are perturbed and one where only visible bands are perturbed.}
 \includegraphics[width=1.0\linewidth]{Vis_vs_VISNIR.pdf}
-\end{figure}
-%----------- Second Global -------------------
-\begin{figure}
-\centering
-\textbf{Rrs(555) uncertainty}\par\medskip
-\includegraphics[width=1.0\linewidth]{rrsPercUnc555.png}
 \end{figure}
 \end{column} % End of column 2.2
 
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
+
 \end{block}
-% global412 was here
-%---------- Colorbar ------------------------
+%---------- First Global ------------------------
 \begin{figure}
 \centering
-\includegraphics[width=1.0\linewidth]{rrsUNCcolorbar.png}
-\\{Rrs uncertainty (\%)}\par\medskip
+\textbf{Rrs(412) uncertainty}\par\medskip
+\includegraphics[width=1.0\linewidth,height=20cm]{rrsPercUnc412.png}
 \end{figure}
-%global555 was here
+
+%---------- Colorbar ------------------------
+\begin{figure}
+\includegraphics[width=0.5\linewidth,keepaspectratio]{rrsUNCcolorbar.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\textbf{Rrs(555) uncertainty}\par\medskip
+\includegraphics[width=1.0\linewidth,height=20cm]{rrsPercUnc555.png}
+\end{figure}
 
 
 \begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
